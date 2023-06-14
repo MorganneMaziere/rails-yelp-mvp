@@ -1,0 +1,34 @@
+<%= form_with(model: restaurant, url: restaurants_path) do |form| %>
+  <% if restaurant.errors.any? %>
+    <div class="alert alert-danger">
+      <h4><%= pluralize(restaurant.errors.count, "error") %> prohibited this restaurant from being saved:</h4>
+      <ul>
+        <% restaurant.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :address %>
+    <%= form.text_field :address, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone_number %>
+    <%= form.text_field :phone_number, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.select :category, ["chinese", "italian", "japanese", "french", "belgian"], class: 'form-control' %>
+  </div>
+
+  <%= form.submit 'Create Restaurant', class: 'btn btn-primary' %>
+<% end %>
